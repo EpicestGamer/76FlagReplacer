@@ -70,4 +70,14 @@
     nbproject/build-impl.xml file. 
 
     -->
+	<target name="-post-compile">
+		<copy todir="${dist.dir}">
+			<fileset dir="." includes="presets"/>
+		</copy>
+		<copy todir="${dist.dir}/presets">
+			<fileset dir="presets"/>
+		</copy>
+        <!-- Empty placeholder for easier customization. -->
+        <!-- You can override this target in the ../build.xml file. -->
+    </target>
 </project>

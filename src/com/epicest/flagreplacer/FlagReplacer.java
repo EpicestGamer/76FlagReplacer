@@ -171,7 +171,7 @@ public class FlagReplacer extends javax.swing.JFrame {
         } catch (IOException ioe) {
             // let the user know if failed
             JOptionPane.showMessageDialog(null,
-                    "Error while initializing program, please alert the developer.\n\n" + ioe.getLocalizedMessage(),
+                    "Error while initializing program, please alert the developer.\n\nException Message: " + ioe.getLocalizedMessage(),
                     "Fallout 76 Flag Replacer",
                     JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(FlagReplacer.class.getName()).log(Level.SEVERE, "IOException occured while loading initial images.", ioe);
@@ -266,7 +266,7 @@ public class FlagReplacer extends javax.swing.JFrame {
                 }
             } catch (IOException ioe) {
                 JOptionPane.showMessageDialog(this,
-                        "Error while saving, please alert the developer.\n\n" + ioe.getLocalizedMessage(),
+                        "Error while saving, please alert the developer.\n\nException Message: " + ioe.getLocalizedMessage(),
                         "Fallout 76 Flag Replacer",
                         JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(FlagReplacer.class.getName()).log(Level.SEVERE, "IOException occured while saving.", ioe);
@@ -287,7 +287,7 @@ public class FlagReplacer extends javax.swing.JFrame {
             } catch (IOException ioe) {
                 flagImageInput = null;
                 JOptionPane.showMessageDialog(this,
-                        "Error while loading flag image file, please alert the developer.\n\n" + ioe.getLocalizedMessage(),
+                        "Error while loading flag image file, please alert the developer.\n\nException Message: " + ioe.getLocalizedMessage(),
                         "Fallout 76 Flag Replacer",
                         JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(FlagReplacer.class.getName()).log(Level.WARNING, "IOException occured while loading input flag image.", ioe);
@@ -419,6 +419,8 @@ public class FlagReplacer extends javax.swing.JFrame {
         javax.swing.JButton nexusButton = new javax.swing.JButton();
         javax.swing.JButton githubButton = new javax.swing.JButton();
         javax.swing.JButton doneButton = new javax.swing.JButton();
+        javax.swing.JScrollPane licenseScrollPane = new javax.swing.JScrollPane();
+        javax.swing.JTextArea licenseTextArea = new javax.swing.JTextArea();
         javax.swing.JPanel materialPanel = new javax.swing.JPanel();
         javax.swing.JPanel materialPreviewPanel = new javax.swing.JPanel();
         materialPreviewLabel = new javax.swing.JLabel();
@@ -456,7 +458,7 @@ public class FlagReplacer extends javax.swing.JFrame {
 
         aboutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aboutLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/appIcon.png"))); // NOI18N
-        aboutLabel.setText("<html>\n<div style='text-align: center;'>\n<h1> Fallout 76 Flag Replacer Tool v1.0 </h1>\n<h2> Developed by Jair - EpicestGamer </h2>\n<p>76 Flag Replacer Tool</p>\n<p>Copyright (C) 2021  Jair</p>\n<p/>\n<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>\n<p/>\n<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p>\n<p/>\n<p>You should have received a copy of the GNU General Public License along with this program.  If not, see https://www.gnu.org/licenses/.</p>\n</div>\n<html>");
+        aboutLabel.setText("<html>\n<div style='text-align: center;'>\n<h1> Fallout 76 Flag Replacer Tool v1.0 </h1>\n<h2> Developed by Jair - EpicestGamer </h2>\n</div>\n<html>");
         aboutLabel.setToolTipText("");
         aboutLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         aboutLabel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -482,19 +484,30 @@ public class FlagReplacer extends javax.swing.JFrame {
             }
         });
 
+        licenseScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        licenseTextArea.setEditable(false);
+        licenseTextArea.setColumns(20);
+        licenseTextArea.setLineWrap(true);
+        licenseTextArea.setRows(5);
+        licenseTextArea.setText("76 Flag Replacer Tool\nCopyright (C) 2021  Jair\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see https://www.gnu.org/licenses/.");
+        licenseTextArea.setWrapStyleWord(true);
+        licenseScrollPane.setViewportView(licenseTextArea);
+
         javax.swing.GroupLayout aboutDialogLayout = new javax.swing.GroupLayout(aboutDialog.getContentPane());
         aboutDialog.getContentPane().setLayout(aboutDialogLayout);
         aboutDialogLayout.setHorizontalGroup(
             aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aboutDialogLayout.createSequentialGroup()
+            .addGroup(aboutDialogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(aboutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(aboutDialogLayout.createSequentialGroup()
+                .addGroup(aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(licenseScrollPane)
+                    .addComponent(aboutLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aboutDialogLayout.createSequentialGroup()
                         .addComponent(nexusButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(githubButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                         .addComponent(doneButton)))
                 .addContainerGap())
         );
@@ -503,7 +516,9 @@ public class FlagReplacer extends javax.swing.JFrame {
             .addGroup(aboutDialogLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(aboutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(licenseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(doneButton)
                     .addComponent(nexusButton)
@@ -717,14 +732,14 @@ public class FlagReplacer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(texturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(texturePanelLayout.createSequentialGroup()
+                        .addComponent(textureFlagImageTextbox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textureFlagImageButton))
+                    .addGroup(texturePanelLayout.createSequentialGroup()
                         .addComponent(textureOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textureWearTearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(texturePanelLayout.createSequentialGroup()
-                        .addComponent(textureFlagImageTextbox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textureFlagImageButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         texturePanelLayout.setVerticalGroup(
@@ -828,7 +843,7 @@ public class FlagReplacer extends javax.swing.JFrame {
             Desktop.getDesktop().browse(new URI("https://github.com/EpicestGamer/76FlagReplacer"));
         } catch (IOException | URISyntaxException e) {
             JOptionPane.showMessageDialog(this,
-                    "Unable to open Github link. Apologies for the inconvenience.\n\n" + e.getLocalizedMessage(),
+                    "Unable to open Github link. Apologies for the inconvenience.\n\nException Message: " + e.getLocalizedMessage(),
                     "Fallout 76 Flag Replacer",
                     JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(FlagReplacer.class.getName()).log(Level.WARNING, "Could not open Github link", e);
@@ -840,7 +855,7 @@ public class FlagReplacer extends javax.swing.JFrame {
             Desktop.getDesktop().browse(new URI("https://www.nexusmods.com/fallout76/mods/932"));
         } catch (IOException | URISyntaxException e) {
             JOptionPane.showMessageDialog(this,
-                    "Unable to open Nexus Mods link. Apologies for the inconvenience.\n\n" + e.getLocalizedMessage(),
+                    "Unable to open Nexus Mods link. Apologies for the inconvenience.\n\nException Message: " + e.getLocalizedMessage(),
                     "Fallout 76 Flag Replacer",
                     JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(FlagReplacer.class.getName()).log(Level.WARNING, "Could not open Nexus Mods link", e);
